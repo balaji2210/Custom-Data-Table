@@ -1,0 +1,30 @@
+
+.wrapper{
+  max-width: 85rem;
+  width: 85%;
+  margin: 5rem auto;
+ 
+}
+
+.wrapper > div:first-child{
+  margin-left: 1rem;
+  padding: 1rem;
+  font-weight: 500;
+  font-size: medium;
+}
+
+.wrapper > div:nth-child(2){
+  padding: 1rem;
+  border: 2px solid  #e8e4e3;
+  border-radius: 0.8rem;
+}
+
+
+.tableHeadBg{
+  cursor: pointer;
+   
+}
+
+.tableText:hover{
+  background-color: grey;
+}
