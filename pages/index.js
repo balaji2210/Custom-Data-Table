@@ -13,17 +13,6 @@ const columns = [
   "Image",
 ];
 
-const data = [
-  { id: 1, name: "Balaji", age: 22 },
-  { id: 2, name: "Steve", age: 23 },
-  { id: 3, name: "Smith", age: 24 },
-  { id: 4, name: "Rahul", age: 25 },
-  { id: 5, name: "Ravi", age: 26 },
-  { id: 6, name: "Kiran", age: 27 },
-  { id: 7, name: "Kalyan", age: 28 },
-  { id: 8, name: "Jai", age: 29 },
-];
-
 export default function Home() {
   const [products, setProducts] = useState([]);
 
@@ -66,5 +55,21 @@ export default function Home() {
     fetchData();
   }, []);
 
-  return <CustomTable columns={columns} rows={products} />;
+  return (
+    <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Image
+          src="https://s3-eu-west-1.amazonaws.com/tpd/logos/60eb4ffc134d2a0001cc0aa0/0x0.png"
+          width="100"
+          height="100"
+        />
+      </div>
+      <CustomTable columns={columns} rows={products} />;
+    </>
+  );
 }

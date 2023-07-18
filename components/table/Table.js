@@ -6,16 +6,37 @@ import {
   Th,
   Td,
   TableContainer,
-  TableCaption,
 } from "@chakra-ui/react";
 
+import { Input } from "@chakra-ui/react";
+
 import styles from "./Table.module.css";
+import { useState } from "react";
 
 const CustomTable = ({ columns = [], rows = [], title = "Results" }) => {
+  const [search, setSearch] = useState(" ");
+
+  const filteredData = rows?.filter((item) =>
+    Object?.values(item)?.some(
+      (value) =>
+        typeof value === "string" &&
+        value?.toLowerCase()?.includes(search?.toLowerCase())
+    )
+  );
+
   return (
     <div className={styles.wrapper}>
       <div>
         <h4>{title}</h4>
+        <div>
+          <Input
+            htmlSize={10}
+            width="auto"
+            value={search}
+            placeholder="Search..."
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
       </div>
       <TableContainer>
         <Table variant="simple">
@@ -27,7 +48,7 @@ const CustomTable = ({ columns = [], rows = [], title = "Results" }) => {
             </Tr>
           </Thead>
           <Tbody>
-            {rows?.map((item) => (
+            {filteredData?.map((item) => (
               <Tr>
                 {Object?.values(item)?.map((value) => (
                   <Td>{value}</Td>
